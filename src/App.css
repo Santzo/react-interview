@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+*{
+  font-family: Play, sans-serif;
+}
+body {
+  margin: auto;
+  width: 720px;
+  max-width: 90vw;
+  line-height: 1.6;
+  color: #fff;
+  font-size: 100%;
+  padding: 0;
+  background-color: rgb(20, 26, 51);
+  text-shadow: 1px 1px #222;
+  overflow: hidden;
+}
+
+h1, h3 {
+  text-align: center;
+}
+.checkbox-wrapper{
+  width: 50%;
+  margin-left: 10%;
+  align-self: center;
+  cursor: pointer;
+  /* background-color: red; */
+}
+
+.checkmark {
+  display:block;
+  margin: auto;
+  background-color: #ccc;
+  width: 1.8em;
+  height:1.8em;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: relative;
+  pointer-events: none;
+  transition: all ease-in-out 0.4s;
+}
+
+#check:checked ~ .checkmark{
+  background-color: #12832b;
+}
+.checkmark::after{
+  content: "";
+  position: absolute;
+  right:35%;
+  top: 6%;
+   border-right: 3px solid white;
+  border-bottom:  3px solid white;
+  transform: rotateZ(40deg);
+  
+  opacity: 0;
+}
+#check:checked ~ .checkmark::after{
+  animation: drawCheckmark 0.25s linear forwards;
+}
+
+.todoName{
+  font-weight: 100;
+  cursor: default;
+}
+.wrapper {
+  animation: fadeIn 1s;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  transition: all ease-out 0.3s;
+  display: grid;
+  grid-template-columns:  5fr 2fr 1fr;
+}
+.todos-wrapper:hover{
+  background: rgb(71, 77, 102);
+}
+.main-wrapper{
+  border: 2px solid #446;
+  border-radius: 15px;
+  background: rgb(26, 32, 57);
+  padding: 25px 15px 25px 15px;
+}
+.todo-header{
+  height:2em;
+  background: rgb(16, 22, 47);
+  margin-bottom: 10px;
+}
+.todo-header-text{
+  margin: auto;
+  font-weight: 100;
+  text-align: center;
+}
+
+.add-todos-wrapper{
+  position: relative;
+  margin-top: 30px;
+}
+.complete {
+  color: #c4c4c4 
+}
+
+.btn {
+  background:rgb(61, 67, 92);
+  border: 1px solid black; 
+  color: white;
+  border-radius: 6px;
+  align-self: center;
+  height: 2.8em;
+  width: 5em;
+  font-size: 100%;
+  cursor: pointer;
+}
+.btn:hover{
+  animation: buttonHover linear 1.5s infinite;
+}
+
+.btn-complete {
+  background-color: #c4c4c4;
+  color: white; 
+}
+
+.btn-submit {
+  justify-self: flex-end;
+  margin-right: 2.5%;
+}
+.add-todo-input-field{
+  transition: all linear 0.2s;
+  font-size:120%;
+  background: none;
+  width:75%;
+  color: #ddd;
+  border:0px;
+  border-bottom: 1px solid #aab;
+}
+.add-todo-input-field:focus{  
+  outline: none;
+  border:0px;
+  width:100%;
+  border-bottom: 1px solid white;
+}
+.warning-text{
+  animation: fadeIn 3s reverse;
+  text-shadow: none;
+  font-size: 1rem;
+  position: absolute;
+  top:-10px;
+  left:17px;
+  color:rgb(190, 32, 32);
+}
+
+@keyframes fadeIn{
+  from {opacity:0;}
+  to {opacity:1;}
+}
+@keyframes buttonHover{
+  0%{color:#fff; background: rgb(61, 67, 92);}
+  50%{color:#999;background: rgb(55, 62, 87);}
+  100%{color:#fff;background: rgb(61, 67, 92);}
+}
+@keyframes drawCheckmark{
+  0%{width: 0em; opacity: 0;}
+  50%{width: 0.4em;height:0.3em;}
+  100%{width: 0.4em; height:1em;opacity: 1;}
+}
+/* Reduce the font-size for mobile devices */
+@media all and (max-width: 720px){
+  body{
+    font-size: 85%;
+  }
+  .todo-header{
+    grid-template-columns:  5fr 2fr 1.3fr;
+  }
+}
+/* The checkmark animation didnt work properly on Microsoft Edge, so kind of a hack to fix that */
+@supports (-ms-ime-align:auto) {
+  #check:checked ~ .checkmark::after{
+    width: 0.4em;
+    height: 1em;
+}
+}
