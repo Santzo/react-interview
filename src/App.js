@@ -31,7 +31,6 @@ function App() {
         setTodos(newTodos);
         setNewTodoName('');
     }
-
     const onTodoCompletedClick = event => {
         const id = event.target.value;
         const todoItems = [...todos];
@@ -49,7 +48,6 @@ function App() {
         const itemToRemove = todoItems.findIndex(item => item.id === id);
         todoItems.splice(itemToRemove, 1);
         setTodos(todoItems);
-        console.log(todoItems);
     }
 
     // Map through the todos array to show the todos for the user
@@ -82,7 +80,9 @@ function App() {
         </div>
     );
 }
+
 export default App;
+
 
 
 

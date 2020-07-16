@@ -54,7 +54,7 @@ h1, h3 {
   opacity: 0;
 }
 #check:checked ~ .checkmark::after{
-  animation: drawCheckmark 0.25s linear forwards;
+  animation: drawCheckmark 0.2s linear forwards;
 }
 
 .todoName{
